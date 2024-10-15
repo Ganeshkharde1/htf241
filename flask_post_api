@@ -1,0 +1,20 @@
+from flask import Flask, request, jsonify
+
+# Create the Flask app
+app = Flask(__name__)
+
+# Define the route to handle the POST request
+@app.route('/upload', methods=['POST'])
+def receive_data():
+    # Get the JSON data from the request
+    data = request.get_json()
+    
+    # Print the received data
+    print("Received Data:", data)
+    
+    # Return a success response
+    return jsonify({"status": "success", "message": "Well Done! Data Sent Successfully"})
+
+# Run the server
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
